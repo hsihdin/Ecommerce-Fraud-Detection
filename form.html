@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ecommerce Fraud Detection</title>
+    <style>
+        body {
+            background-color: #1d3c4e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 100px;
+            background-color: #0c2737;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 3px;
+            border: none;
+        }
+
+        .btn-submit {
+            background-color: #ff0000;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ecommerce Fraud Detection</h1>
+        
+        <form method="post" action="/submit" id='myForm' onsubmit="return generateSQLQuery()">
+            
+            <label for="transactionId">Transaction ID:</label>
+            <input type="text" id="transactionId" name="transactionId">
+
+            <label for="batchId">Batch ID:</label>
+            <input type="text" id="batchId" name="batchId">
+
+            <label for="accountId">Account ID:</label>
+            <input type="text" id="accountId" name="accountId">
+
+            <label for="subscriptionId">Subscription ID:</label>
+            <input type="text" id="subscriptionId" name="subscriptionId">
+
+            <label for="customerId">Customer ID:</label>
+            <input type="text" id="customerId" name="customerId">
+
+            <label for="currencyCode">Currency Code:</label>
+            <input type="text" id="currencyCode" name="currencyCode">
+
+            <label for="countryCode">Country Code:</label>
+            <input type="text" id="countryCode" name="countryCode">
+
+            <label for="providerId">Provider ID:</label>
+            <input type="text" id="providerId" name="providerId">
+
+            <label for="productId">Product ID:</label>
+            <input type="text" id="productId" name="productId">
+
+            <label for="productCategory">Product Category:</label>
+            <input type="text" id="productCategory" name="productCategory">
+
+            <label for="channelId">Channel ID:</label>
+            <input type="text" id="channelId" name="channelId">
+
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount">
+
+            <label for="value">Value:</label>
+            <input type="text" id="value" name="value">
+
+            <label for="transactionStartTime">Transaction Start Time:</label>
+            <input type="text" id="transactionStartTime" name="transactionStartTime">
+
+            <label for="pricingStrategy">Pricing Strategy:</label>
+            <input type="text" id="pricingStrategy" name="pricingStrategy">
+
+            <input type="submit" value="Insert Data to Transactional Database" class="btn-submit" style="height:50px; width:620px">
+            <input type="hidden" id="sqlQuery" name="sqlQuery">
+            <!-- <input type="submit" value="Generate SQL Query" class="btn-submit"> -->
+        </form>
+        </div>
+        <script>
+        function generateSQLQuery() {
+        // Get form inputs
+
+        
+        var transactionId = document.getElementById('transactionId').value;
+        var batchId = document.getElementById('batchId').value;
+        var accountId = document.getElementById('accountId').value;
+        var subscriptionId = document.getElementById('subscriptionId').value;
+        var customerId = document.getElementById('customerId').value;
+        var currencyCode = document.getElementById('currencyCode').value;
+        var countryCode = document.getElementById('countryCode').value;
+        var providerId = document.getElementById('providerId').value;
+        var productId = document.getElementById('productId').value;
+        var productCategory = document.getElementById('productCategory').value;
+        var channelId = document.getElementById('channelId').value;
+        var amount = document.getElementById('amount').value;
+        var value = document.getElementById('value').value;
+        var transactionStartTime = document.getElementById('transactionStartTime').value;
+        var pricingStrategy = document.getElementById('pricingStrategy').value;
+        // Generate SQL query
+        var sqlQuery = `SELECT * FROM transactions WHERE 1=1 `;
+        if (batchId !== '') {
+            sqlQuery += `AND batch_id = '${batchId}' `;
+        }
+        if (accountId !== '') {
+            sqlQuery += `AND account_id = '${accountId}' `;
+        }
+        if (subscriptionId !== '') {
+            sqlQuery += `AND subscription_id = '${subscriptionId}' `;
+        }
+        if (customerId !== '') {
+            sqlQuery += `AND customer_id = '${customerId}' `;
+        }
+        if (currencyCode !== '') {
+            sqlQuery += `AND currency_code = '${currencyCode}' `;
+        }
+        if (countryCode !== '') {
+            sqlQuery += `AND country_code = '${countryCode}' `;
+        }
+        if (providerId !== '') {
+            sqlQuery += `AND provider_id = '${providerId}' `;
+        }
+        if (productId !== '') {
+            sqlQuery += `AND product_id = '${productId}' `;
+        }
+        if (productCategory !== '') {
+            sqlQuery += `AND product_category = '${productCategory}' `;
+        }
+        if (channelId !== '') {
+            sqlQuery += `AND channel_id = '${channelId}' `;
+        }
+        if (amount !== '') {
+            sqlQuery += `AND amount = '${amount}' `;
+        }
+        if (value !== '') {
+            sqlQuery += `AND value = '${value}' `;
+        }
+        if (transactionStartTime !== '') {
+            sqlQuery += `AND transaction_start_time = '${transactionStartTime}' `;
+        }
+        if (pricingStrategy !== '') {
+            sqlQuery += `AND pricing_strategy = '${pricingStrategy}' `;
+        }
+
+        // Output the generated SQL query
+        alert(`Generated SQL Query:\n${sqlQuery}`);
+
+        document.getElementById('sqlQuery').value = sqlQuery;
+        return True; // Allow form submission
+        }
+</script>
+
