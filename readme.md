@@ -1,3 +1,5 @@
+## E-COMMERCE FRAUD DETECTION 
+
 E-commerce is growing at a rate never previously witnessed, making it a prime target for fraudsters. Due to the potential for financial loss, damage to one's reputation, and dissatisfied consumers, fraudulent transactions are a major risk for e-commerce enterprises. To combat this issue, many companies are investing in fraud detection and prevention systems that use cutting-edge machine learning algorithms to identify patterns of fraudulent behavior. 
 
 An effective and user-friendly fraud detection solution is what this project seeks to give. The technology will instantly examine transaction data to spot any suspicious patterns and, if necessary, alert the appropriate parties. While simultaneously giving clients a nice and hassle-free experience, the technology will be able to recognize fraudulent transactions and prevent them. 
